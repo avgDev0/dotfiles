@@ -97,6 +97,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
+alias ho="cd ~"
 # Git aliases
 alias gs="git status"
 alias gd="git diff"
@@ -113,14 +114,26 @@ alias gsh="git stash"
 alias ll="ls -la"
 alias c="cd"
 alias cl="clear"
+alias vim="nvim"
 
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export EDITOR=nvim
+export VISUAL=nvim
 export NVM_DIR="$HOME/.nvm"
+
 #for Mac
-source $(brew --prefix nvm)/nvm.sh
+if [[ $OSTYPE == 'darwin'* ]];
+then
+    source $(brew --prefix nvm)/nvm.sh
+else
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
 #Not Mac
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 nvm use node
+neofetch
